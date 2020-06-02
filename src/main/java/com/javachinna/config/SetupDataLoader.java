@@ -57,9 +57,9 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
 		UserEntity user = userRepository.findByUsername(name);
 		if (user == null) {
 			user = new UserEntity(name, "$2a$10$slYQmyNdGzTn7ZLBXBChFOC9f6kFjAqPhccnP6DxlWXx2lPk1C3G6");
+			user.setRoles(Set.of(role));
+			user = userRepository.save(user);
 		}
-		user.setRoles(Set.of(role));
-		user = userRepository.save(user);
 		return user;
 	}
 }
