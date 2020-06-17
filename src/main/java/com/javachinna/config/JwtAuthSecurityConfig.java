@@ -56,7 +56,7 @@ public class JwtAuthSecurityConfig extends WebSecurityConfigurerAdapter {
 				// Only admin can perform HTTP delete operation
 				.authorizeRequests().antMatchers(HttpMethod.DELETE).hasRole(Role.ADMIN)
 				// any authenticated user can perform all other operations
-				.antMatchers("/products/**").hasAnyRole(Role.ADMIN, Role.USER).and().httpBasic()
+				.antMatchers("/products/**").hasAnyRole(Role.ADMIN, Role.USER)
 				// Permit all other request without authentication
 				.and().authorizeRequests().anyRequest().permitAll()
 				// Reject every unauthenticated request and send error code 401.
